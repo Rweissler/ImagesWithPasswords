@@ -1,0 +1,35 @@
+﻿@using ImagesWithPasswords.Web.Models;
+@model ViewImageViewModel
+
+@if (Model.PasswordCheck)
+  {
+
+    <div class="row">
+        <h4> Please enter password for this image:</h4>
+        <form method="post" action="/home/viewimage">
+            @if(!string.IsNullOrEmpty(Model.ErrorMessage) )
+                {
+                   <h3 class="alert-danger">Model.ErrorMessage</h3>
+                }
+
+            <input type="hidden" name="id" value="@Model.ImageId" />
+            <input type="text" class="form-control" placeholder="Password" />
+            <br />
+            <button class="btn-primary">Submit</button>
+        </form>
+    </div>
+         
+            
+   }
+
+            else
+            {
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <img src="/uploads/@Model.ImagePath" style="width: 800px;" />
+                        <br />
+                        <h3>Views: @Model.ImageViewCount</h3>
+                    </div>
+                </div>
+            }
+  
